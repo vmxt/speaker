@@ -3,6 +3,27 @@ require 'aws-sdk-polly'
 require 'dotenv/load'
 require 'open3'
 
+username = ENV.fetch('TWITCH_USERNAME')
+token = ENV.fetch('TWITCH_OAUTH_TOKEN')
+region_polly = ENV.fetch('AWS_REGION', 'ap-northeast-1')
+aws_access_id = ENV.fetch('AWS_REGION_KEY_ID')
+aws_token = ENV.fetch('AWS_SECRET_ACCESS_KEY')
+begin
+  puts 'STARTING APP'
+  ifc = Irc.new(
+    username: username,
+    token: token,
+    region_polly: region_polly,
+    aws_access_id: aws_access_id,
+    aws_token: aws_token
+  )
+  irc.on_message
+  irc.run!
+rescue Interrupt
+  puts 'CLOSING APP'
+  irc.quit
+end
+
 class Speaker
   def initialize(region:, acces_id, secret_key:)
     @client = Aws::Polly::Client.new(
@@ -67,7 +88,3 @@ class Irc
     @irc.quit
   end
 end
-
-
-
-
