@@ -18,7 +18,7 @@ begin
     aws_token: aws_token
   )
   irc.on_message
-  irc.run!
+  irc.run
 rescue Interrupt
   puts 'CLOSING APP'
   irc.quit
