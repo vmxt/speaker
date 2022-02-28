@@ -1,21 +1,23 @@
 # speaker
-twitch tts
+ruby-speaker
 
-## Install
+## Installing dependencies
 ```
 bundle Install
 ```
 
-so, [mpg123 windows version](https://www.mpg123.org/download.shtml)
-download and setting.
+Install [mpg123](https://www.mpg123.org/download.shtml) for Windows version
 
-## Usage
+## Usage in .env
 ```
-export TWITCH_USERNAME=[user name]
-export TWITCH_OAUTH_TOKEN=[token]
-export AWS_REGION=[aws region]
-export AWS_ACCESS_KEY_ID=[aws access key id]
-export AWS_SECRET_ACCESS_KEY=[aws secret access key]
+export TWITCH_USERNAME=[]
+export TWITCH_OAUTH_TOKEN=[]
+export AWS_REGION=[]
+export AWS_ACCESS_KEY_ID=[]
+export AWS_SECRET_ACCESS_KEY=[]
+```
 
+## Starting the application
+```
 bundle exec ruby speaker.rb
 ```
